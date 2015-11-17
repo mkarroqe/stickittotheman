@@ -12,21 +12,22 @@
 
 from PIL import Image
 
-size = (1002, 720)
-background = Image.open("images/sample.png")
-overlay = Image.open("images/bpb.png")
+def process():
+	sticker = Image.open("images/bpb.png")
+	img = Image.open("images/sample.png")
+	size = img.size
 
-print("yas")
+	sticker = sticker.convert("RGBA")
+	sticker = sticker.resize(size)
 
-new_img = Image.new("RGB", size)
-background.paste(overlay, (0, 0), overlay)
-new_img = background
+	img = img.convert("RGBA")
 
-print("yaaas")
+	new_img = Image.new("RGB", size)
+	img.paste(sticker, (0, 0), sticker)
+	new_img = img
 
-new_img.save("stickittoem.png","PNG")
-print("yaaaaAAAAAAS!!!!!")
+	new_img.save("stickittoem.png","PNG")
 
-new_img.show()
+	new_img.show()
 
-print("DONE")
+process()
