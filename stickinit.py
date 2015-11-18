@@ -13,21 +13,32 @@
 from PIL import Image
 
 def process():
-	sticker = Image.open("images/bpb.png")
-	img = Image.open("images/sample.png")
-	size = img.size
+	sticker = Image.open("images/bpb_sq.png")
+	img = Image.open("images/sample2.jpg")
 
 	sticker = sticker.convert("RGBA")
-	sticker = sticker.resize(size)
-
 	img = img.convert("RGBA")
 
-	new_img = Image.new("RGB", size)
+	# adds padding to make image square if it's not
+	longer_side = max(img.size)
+	horizontal_padding = (longer_side - img.size[0]) / 2
+	vertical_padding = (longer_side - img.size[1]) / 2
+	img = img.crop(
+	    (
+	        -horizontal_padding,
+	        -vertical_padding,
+	        img.size[0] + horizontal_padding,
+	        img.size[1] + vertical_padding
+	    )
+	)
+
+	size = img.size
+	sticker = sticker.resize(size)
+
 	img.paste(sticker, (0, 0), sticker)
 	new_img = img
 
-	new_img.save("stickittoem.png","PNG")
-
+	new_img.save("stickittoem.jpg","JPEG")
 	new_img.show()
 
 process()
