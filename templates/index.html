@@ -15,14 +15,15 @@
 <html>
 	<head>
 		<title>stickittotheman</title>
+		<link href='https://fonts.googleapis.com/css?family=Oswald:400,300' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" type="text/css" href="stylin.css">
 	</head>
 	<body>
 		<h1>stick it to the man</h1>
-		<ol>
-			<li>Choose a filter.</li>
-			<li>Upload your image.</li>
-			<li>Share on your social medias and stick it to the man!</li>
-		</ol>
+		
+		<form action="upload" method="post" enctype="multipart/form-data">
+	        <input type="file" name="file">
+	        <input type="submit" value="Upload">
+	    </form>
 	</body>
 </html>
