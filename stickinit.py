@@ -11,6 +11,7 @@
 #       \__(__|    site by Mary Karroqe
 
 from PIL import Image
+#from flask import Flask, redirect, jsonify, render_template, request, send_file
 
 def process():
 	sticker = Image.open("images/bpb_sq.png")
@@ -42,3 +43,8 @@ def process():
 	new_img.show()
 
 process()
+
+
+
+
+
